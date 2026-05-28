@@ -2,7 +2,7 @@ function App() {
   return (
     <div>
       <h1 className="text-4xl font-bold text-center mt-20">
-        Pratik Rathod Portfolio
+        Pratik Rathod Portfolio!
       </h1>
     </div>
   )
