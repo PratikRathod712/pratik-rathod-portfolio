@@ -1,10 +1,13 @@
-import Hero from "./Hero"
+import Hero from "./Hero";
+import Projects from "./Projects";
+
 function App() {
   return (
-    <main>
-      <Hero/>
-    </main>
-  )
+    <>
+      <Hero />
+      <Projects />
+    </>
+  );
 }
 
-export default App
+export default App;
