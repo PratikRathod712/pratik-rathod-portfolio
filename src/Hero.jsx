@@ -31,7 +31,7 @@ function Hero() {
         </h2>
 
         {/* Animated Roles */}
-        <div className="mt-6 text-xl md:text-3xl font-medium text-zinc-300 h-12"> I am &nbsp;
+        <div className="mt-6 text-xl md:text-3xl font-medium text-zinc-300 h-12">
           <TypeAnimation
             sequence={[
               "Freelancer Developer",
