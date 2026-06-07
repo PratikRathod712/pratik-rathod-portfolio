@@ -3,8 +3,10 @@ import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#0a0a0a] text-white overflow-hidden px-6 pb-20">
-
+<section
+  id="hero"
+  className="relative min-h-screen flex items-center justify-center bg-[#0a0a0a] text-white overflow-hidden px-6 pt-24 pb-20"
+>
       {/* Background Glow */}
       <motion.div
         className="absolute top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/20 blur-[150px] rounded-full"
@@ -22,7 +24,7 @@ function Hero() {
 
       {/* Huge Background Text */}
       <motion.h1
-        className="absolute top-10 text-[8rem] md:text-[12rem] lg:text-[16rem] font-black uppercase tracking-widest text-white/[0.04] select-none"
+        className="absolute top-20 text-[8rem] md:text-[12rem] lg:text-[16rem] font-black uppercase tracking-widest text-white/[0.04] select-none"
         animate={{
           y: [0, -15, 0],
         }}
