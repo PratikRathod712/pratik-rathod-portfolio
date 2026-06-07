@@ -52,8 +52,40 @@ function Skills() {
           </p>
         </motion.div>
 
+
+  {/* Mobile */}
+  <div className="md:hidden flex flex-wrap justify-center gap-3">
+    {[
+      "ASP.NET Core",
+      "React",
+      "PHP",
+      "SQL Server",
+      "PostgreSQL",
+      "MongoDB",
+      "JavaScript",
+      "Tailwind CSS",
+      "Git",
+      "GitHub",
+    ].map((skill) => (
+      <span
+        key={skill}
+        className="
+          px-4 py-2
+          rounded-full
+          bg-zinc-900
+          border border-zinc-800
+          text-zinc-300
+        "
+      >
+        {skill}
+      </span>
+    ))}
+  </div>
+
+  {/* Desktop Bento */}
+
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[180px]">
+        <div className="hidden md:grid md:grid-cols-6 gap-6 auto-rows-[180px]">
 
           {/* React */}
           <TechCard
