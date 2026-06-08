@@ -109,64 +109,64 @@ function Contact() {
             transition={{ duration: 0.8 }}
           >
             <form
-              name="contact"
-              method="POST"
-              action="/success.html"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              className="space-y-6"
-            >
-              {/* Netlify Required */}
-              <input type="hidden" name="form-name" value="contact" />
+  name="contact"
+  method="POST"
+  action="/success.html"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  className="space-y-6"
+>
+  {/* Required for Netlify */}
+  <input type="hidden" name="form-name" value="contact" />
 
-              {/* Spam Protection */}
-              <p className="hidden">
-                <label>
-                  Don't fill this out:
-                  <input name="bot-field" />
-                </label>
-              </p>
+  {/* Spam Protection */}
+  <p className="hidden">
+    <label>
+      Don't fill this out:
+      <input name="bot-field" />
+    </label>
+  </p>
 
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-              />
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+  />
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-              />
+  <input
+    type="email"
+    name="email"
+    placeholder="Email Address"
+    required
+    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+  />
 
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-              />
+  <input
+    type="text"
+    name="subject"
+    placeholder="Subject"
+    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+  />
 
-              <textarea
-                name="message"
-                rows="6"
-                placeholder="Tell me about your project..."
-                required
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 resize-none focus:outline-none focus:border-blue-500 transition"
-              />
+  <textarea
+    name="message"
+    rows="6"
+    placeholder="Tell me about your project..."
+    required
+    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 resize-none focus:outline-none focus:border-blue-500 transition"
+  />
 
-              <motion.button
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl font-semibold transition"
-              >
-                Send Message
-              </motion.button>
-            </form>
+  <motion.button
+    whileHover={{ scale: 1.03, y: -2 }}
+    whileTap={{ scale: 0.97 }}
+    type="submit"
+    className="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl font-semibold transition"
+  >
+    Send Message
+  </motion.button>
+</form>
           </motion.div>
         </div>
 
