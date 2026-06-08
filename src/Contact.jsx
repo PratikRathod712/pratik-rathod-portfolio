@@ -1,7 +1,33 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -101,72 +127,122 @@ function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Form / Success State */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <form
-  name="contact"
-  method="POST"
-  action="/success.html"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  className="space-y-6"
->
-  {/* Required for Netlify */}
-  <input type="hidden" name="form-name" value="contact" />
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="
+                  bg-zinc-900/80
+                  border border-green-500/30
+                  rounded-3xl
+                  p-10
+                  text-center
+                  backdrop-blur-sm
+                "
+              >
+                <div className="text-6xl mb-6">🚀</div>
 
-  {/* Spam Protection */}
-  <p className="hidden">
-    <label>
-      Don't fill this out:
-      <input name="bot-field" />
-    </label>
-  </p>
+                <h3 className="text-3xl font-bold text-green-400 mb-4">
+                  Message Received
+                </h3>
 
-  <input
-    type="text"
-    name="name"
-    placeholder="Your Name"
-    required
-    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-  />
+                <p className="text-zinc-300 text-lg">
+                  Thanks for reaching out, Pratik's inbox just got a little more
+                  interesting.
+                </p>
 
-  <input
-    type="email"
-    name="email"
-    placeholder="Email Address"
-    required
-    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-  />
+                <p className="text-zinc-400 mt-4 leading-relaxed">
+                  Your message has been delivered successfully. I'll review it
+                  and get back to you as soon as possible. In the meantime,
+                  feel free to connect with me on LinkedIn.
+                </p>
 
-  <input
-    type="text"
-    name="subject"
-    placeholder="Subject"
-    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
-  />
+                <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400">
+                  ✓ Submission Received
+                </div>
 
-  <textarea
-    name="message"
-    rows="6"
-    placeholder="Tell me about your project..."
-    required
-    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 resize-none focus:outline-none focus:border-blue-500 transition"
-  />
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="
+                    mt-8
+                    block
+                    mx-auto
+                    px-6 py-3
+                    rounded-xl
+                    bg-blue-600
+                    hover:bg-blue-700
+                    transition
+                  "
+                >
+                  Send Another Message
+                </button>
+              </motion.div>
+            ) : (
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="contact" />
 
-  <motion.button
-    whileHover={{ scale: 1.03, y: -2 }}
-    whileTap={{ scale: 0.97 }}
-    type="submit"
-    className="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl font-semibold transition"
-  >
-    Send Message
-  </motion.button>
-</form>
+                <p className="hidden">
+                  <label>
+                    Don't fill this out:
+                    <input name="bot-field" />
+                  </label>
+                </p>
+
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+                />
+
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500 transition"
+                />
+
+                <textarea
+                  name="message"
+                  rows="6"
+                  placeholder="Tell me about your project..."
+                  required
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 resize-none focus:outline-none focus:border-blue-500 transition"
+                />
+
+                <motion.button
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl font-semibold transition"
+                >
+                  Send Message
+                </motion.button>
+              </form>
+            )}
           </motion.div>
         </div>
 
@@ -181,28 +257,24 @@ function Contact() {
               .NET Developer • React Developer • PHP Developer
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-8 text-zinc-500">
-              <div className="mt-8 flex justify-center gap-4">
+            <div className="mt-8 flex justify-center gap-4">
+              <a
+                href="https://github.com/PratikRathod712"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-white hover:-translate-y-1 transition-all duration-300"
+              >
+                <FaGithub size={20} />
+              </a>
 
-                <a
-                  href="https://github.com/PratikRathod712"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-white hover:-translate-y-1 transition-all duration-300"
-                >
-                  <FaGithub size={20} />
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/pratikrathoddev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-blue-500 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <FaLinkedin size={20} />
-                </a>
-
-              </div>
+              <a
+                href="https://www.linkedin.com/in/pratikrathoddev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-blue-500 hover:-translate-y-1 transition-all duration-300"
+              >
+                <FaLinkedin size={20} />
+              </a>
             </div>
 
             <div className="mt-20 relative">
