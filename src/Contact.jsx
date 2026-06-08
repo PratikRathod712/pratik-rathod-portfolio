@@ -111,10 +111,21 @@ function Contact() {
             <form
               name="contact"
               method="POST"
+              action="/success.html"
               data-netlify="true"
+              netlify-honeypot="bot-field"
               className="space-y-6"
             >
+              {/* Netlify Required */}
               <input type="hidden" name="form-name" value="contact" />
+
+              {/* Spam Protection */}
+              <p className="hidden">
+                <label>
+                  Don't fill this out:
+                  <input name="bot-field" />
+                </label>
+              </p>
 
               <input
                 type="text"
@@ -173,25 +184,25 @@ function Contact() {
             <div className="mt-8 flex flex-wrap justify-center gap-8 text-zinc-500">
               <div className="mt-8 flex justify-center gap-4">
 
-  <a
-    href="https://github.com/PratikRathod712"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-white hover:-translate-y-1 transition-all duration-300"
-  >
-    <FaGithub size={20} />
-  </a>
+                <a
+                  href="https://github.com/PratikRathod712"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-white hover:-translate-y-1 transition-all duration-300"
+                >
+                  <FaGithub size={20} />
+                </a>
 
-  <a
-    href="https://www.linkedin.com/in/pratikrathoddev/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-blue-500 hover:-translate-y-1 transition-all duration-300"
-  >
-    <FaLinkedin size={20} />
-  </a>
+                <a
+                  href="https://www.linkedin.com/in/pratikrathoddev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:border-blue-500 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <FaLinkedin size={20} />
+                </a>
 
-</div>
+              </div>
             </div>
 
             <div className="mt-20 relative">
