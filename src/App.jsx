@@ -9,11 +9,11 @@ function App() {
   return (
     <>
       <Hero />
+      <Navbar />
       <About />
       <Skills />
       <Projects />
       <Contact />
-      <Navbar />
     </>
   );
 }
