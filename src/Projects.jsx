@@ -26,7 +26,6 @@ const projects = [
 
     description:
       "Advanced reporting and analytics platform featuring historical analysis, batch-wise filtering, date-range reporting, graphical trends, and production insights for data-driven decision making.",
-
     tech: [
       "ASP.NET Core",
       "SQL Server",
